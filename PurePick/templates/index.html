@@ -1,0 +1,44 @@
+    {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home - MyShop</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- Banner -->
+    <div class="banner">
+    <img src="{% static 'images/banner.jpg' %}" alt="Banner" class="w-full h-auto" />
+    </div>
+  <header>
+    <div class="featured-products">
+  <h2>Featured Products</h2>
+  <div class="product-grid">
+    <img src="{% static 'images/product1.jpg' %}" alt="Headphones" />
+    <img src="{% static 'images/product2.jpg' %}" alt="Shoes" />
+    <img src="{% static 'images/product3.jpg' %}" alt="Watch" />
+  </div>
+</div>
+    <h1>Welcome to MyShop</h1>
+    <nav>
+      <a href="/products/">Products</a>
+      <a href="/cart/">Cart</a>
+      <a href="/account/">Account</a>
+    </nav>
+  </header>
+  <section class="banner">
+    <img src="{% static 'images/banner.jpg' %}" alt="Banner">
+  </section>
+  <section class="product-grid">
+    {% for product in products %}
+      <div class="product-card">
+        <a href="/products/{{ product.id }}/">
+          <img src="{{ product.image.url }}" alt="{{ product.title }}">
+          <h3>{{ product.title }}</h3>
+          <p>${{ product.price }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </section>
+</body>
+</html>

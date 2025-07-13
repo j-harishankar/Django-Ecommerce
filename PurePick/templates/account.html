@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Cart - MyShop</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <h2>Cart</h2>
+  {% if cart_items %}
+    <ul>
+      {% for item in cart_items %}
+        <li>{{ item.product.title }} x{{ item.quantity }} = ${{ item.quantity|floatformat:2|add:item.product.price }}</li>
+      {% endfor %}
+    </ul>
+    <a href="/checkout/">Proceed to Checkout</a>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+</body>
+</html>
