@@ -21,7 +21,6 @@ class Order(models.Model):
     delete_status = models.IntegerField(choices=DELETE_CHOICE,default=LIVE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
 class Items(models.Model):
     product = models.ForeignKey(Products,related_name="added_carts",on_delete=models.SET_NULL,null=True)
     quantity = models.IntegerField(default=1)
